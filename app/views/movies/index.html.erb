@@ -16,9 +16,13 @@
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
-      <th>Movie Title</th>
+      <%= content_tag :th, class: (@order == 'title' ? 'hilite bg-warning' : '') do -%>
+        <%= link_to "Movie Title", movies_path({order:"title",ratings:Hash[@ratings_to_show.map {|v| [v,1]}]}), id: "title_header" %>
+      <% end -%>  
       <th>Rating</th>
-      <th>Release Date</th>
+      <%= content_tag :th, class: (@order == 'release_date' ? 'hilite bg-warning' : '') do -%>
+        <%= link_to "Release Date", movies_path({order:"release_date",ratings:Hash[@ratings_to_show.map {|v| [v,1]}]}), id: "release_date_header" %>
+      <% end -%>  
       <th>More Info</th>
     </tr>
   </thead>
