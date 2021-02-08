@@ -9,6 +9,19 @@ class MoviesController < ApplicationController
   def index
     ratings = params[:ratings]
     @order = params[:order]
+    if ratings != nil then
+        session[:ratings] = ratings
+    end
+    if @order != nil then
+        session[:order] = @order
+    end
+    if params[:commit]!='Refresh' then
+        ratings = session[:ratings]
+        @order = session[:order]
+    else
+        session[:ratings] = ratings
+        session[:order] = @order
+    end
     @ratings_to_show = []
     if ratings != nil then 
         ratings = ratings.keys 
