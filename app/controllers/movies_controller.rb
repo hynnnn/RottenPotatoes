@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
         session[:ratings] = ratings
         session[:order] = @order
     end
-    @ratings_to_show = []
+    @ratings_to_show = Movie.all_ratings
     if ratings != nil then 
         ratings = ratings.keys 
         @ratings_to_show = ratings
